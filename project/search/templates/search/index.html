@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+<body>
+<table style="width:100%">
+    <tr>
+        <th>Detail</th>
+        <th>Status</th>
+        <th>Part_of</th>
+        <th>Product</th>
+        <th>Amount</th>
+    </tr>
+    <tr>
+        <td>{{detail}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% if active %}
+        <tr>
+            <td></td>
+            <td>Active</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% for (Assembly, product, amount) in active %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{Assembly}}</td>
+                <td>{{product}}</td>
+                <td>{{amount}}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+</table>
+</body>
+</html>
