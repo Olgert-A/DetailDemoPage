@@ -10,6 +10,9 @@ table, th, td {
 }
 </style>
 <body>
+<h2>You searched detail '{{detail}}'</h2>
+
+{% if active or archive %}
 <table style="width:100%">
     <tr>
         <th>Detail</th>
@@ -33,17 +36,35 @@ table, th, td {
             <td></td>
             <td></td>
         </tr>
-        {% for (Assembly, product, amount) in active %}
+        {% for binder in active %}
             <tr>
                 <td></td>
                 <td></td>
-                <td>{{Assembly}}</td>
-                <td>{{product}}</td>
-                <td>{{amount}}</td>
+                <td>{{binder.assembly.assembly_name}}</td>
+                <td>{{binder.assembly.part_of_product.product_name}}</td>
+                <td>{{binder.amount}}</td>
             </tr>
         {% endfor %}
     {% endif %}
-
+    {% if archive %}
+        <tr>
+            <td></td>
+            <td>Archive</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% for binder in archive %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td>{{binder.assembly.assembly_name}}</td>
+                <td>{{binder.assembly.part_of_product.product_name}}</td>
+                <td>{{binder.amount}}</td>
+            </tr>
+        {% endfor %}
+    {% endif %}
 </table>
+{% endif %}
 </body>
 </html>
